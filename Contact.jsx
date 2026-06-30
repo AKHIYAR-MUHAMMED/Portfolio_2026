@@ -20,7 +20,8 @@ export default function Contact() {
     }
     setSubmitting(true);
     try {
-        const apiUrl = "http://localhost:8001/api/contact";
+        const apiBase = import.meta.env.VITE_API_URL ?? "/api";
+  const apiUrl = `${apiBase}/contact`;
         const response = await fetch(apiUrl, {
           method: "POST",
           headers: {
