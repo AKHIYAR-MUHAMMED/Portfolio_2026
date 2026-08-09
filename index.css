@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @import "tailwindcss";
 
@@ -12,31 +12,70 @@
 }
 
 :root {
-    --bg-base: #F9FAFB; /* light background */
-    --bg-surface: #FFFFFF; /* surface cards */
-    --bg-elev: #E5E7EB; /* elevated elements */
-    --text-primary: #111827; /* dark text */
-    --text-secondary: #6B7280; /* muted text */
-    --text-tertiary: #9CA3AF; /* subtle text */
+    --bg-base: #0A0A0A;
+    --bg-surface: #121212;
+    --bg-elev: #181818;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --text-tertiary: #6B7280;
     --accent: var(--color-accent);
     --accent-hover: #FF8B33;
-    --border-subtle: #D1D5DB;
+    --border-subtle: #2A2A2A;
 }
 
-/* Dark mode */
-.dark {
-    --bg-base: #000000; /* full black background */
-    --bg-surface: #000000; /* surface same black */
-    --bg-elev: #111111; /* slight elevation contrast */
-    --text-primary: #FFFFFF; /* white text */
-    --text-secondary: #CCCCCC; /* light secondary */
-    --text-tertiary: #999999; /* subtle text */
-    --accent: var(--color-accent);
-    --border-subtle: #222222;
+/* Light mode overrides */
+html.light {
+    --bg-base: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-elev: #F1F5F9;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-tertiary: #64748B;
+    --border-subtle: #E2E8F0;
+}
+
+html.light body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+}
+
+html.light [data-testid="portfolio-root"] {
+    background-color: #F8FAFC !important;
+    color: #0F172A !important;
+}
+
+html.light [data-testid="skills-section"],
+html.light [data-testid="projects-section"],
+html.light [data-testid="writing-section"] {
+    background-color: #F1F5F9 !important;
+}
+
+html.light #about .max-w-7xl,
+html.light [data-testid="site-footer"] {
+    background-color: #FFFFFF !important;
+    border-color: #E2E8F0 !important;
+}
+
+html.light [data-testid^="project-card-"],
+html.light [data-testid^="skill-group-"],
+html.light [data-testid^="community-card-"],
+html.light [data-testid^="post-card-"],
+html.light [data-testid="contact-form"] {
+    background-color: #FFFFFF !important;
+    border-color: #E2E8F0 !important;
+}
+
+html.light h1, html.light h2, html.light h3, html.light h4 {
+    color: #0F172A !important;
+}
+
+html.light p, html.light span.text-\[\#9CA3AF\], html.light p.text-\[\#9CA3AF\] {
+    color: #475569 !important;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
 }
 
 body {
@@ -52,6 +91,21 @@ body {
 ::selection {
     background: var(--accent);
     color: #fff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FF6B00;
 }
 
 .font-display {
@@ -81,7 +135,7 @@ body {
 
 /* Glass card utility */
 .glass-card {
-    background: rgba(255, 255, 255, var(--glass-opacity));
+    background: rgba(20, 20, 20, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-card);
@@ -103,12 +157,19 @@ body {
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 .pulse { animation: pulse 2s infinite; }
 
-/* Slide in animation */
-@keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-.slide-in { animation: slideIn 0.5s ease forwards; opacity: 0; }
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in {
+    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 /* Subtle glow */
-.glow-accent { box-shadow: 0 0 0 1px rgba(255, 69, 0, 0.4), 0 10px 40px -10px rgba(255, 69, 0, 0.35); }
+.glow-accent { 
+    box-shadow: 0 0 0 1px rgba(255, 107, 0, 0.4), 0 10px 40px -10px rgba(255, 107, 0, 0.35); 
+}
 
 /* Underline animation */
 .link-underline {
@@ -121,5 +182,8 @@ body {
 .link-underline:hover { background-size: 100% 1px; }
 
 /* Soft fade in */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { 
+    from { opacity: 0; transform: translateY(16px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
 .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
