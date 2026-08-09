@@ -31,8 +31,21 @@ export default defineConfig({
       '@': path.resolve(__dirname, './')
     }
   },
+  build: {
+    chunkSizeWarningLimit: 1200,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-motion': ['framer-motion'],
+          'vendor-pdfjs': ['pdfjs-dist'],
+        }
+      }
+    }
+  },
   server: {
     port: 5173,
     host: true
   }
 });
+
