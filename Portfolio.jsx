@@ -9,18 +9,17 @@ import Writing from "./Writing.jsx";
 import Contact from "./Contact.jsx";
 import Footer from "./Footer.jsx";
 
-
 export default function Portfolio() {
     return (
-        <div data-testid="portfolio-root" className="min-h-screen bg-[#0A0A0A] text-white relative">
+        <div data-testid="portfolio-root" className="min-h-screen bg-[#0A0A0A] text-white relative selection:bg-accent selection:text-white transition-colors duration-300">
             <Nav />
             <main className="relative z-10">
                 <Hero />
+                <About />
                 <Skills />
+                <Experience />
                 <Projects />
                 <Community />
-                <About />
-                <Experience />
                 <Writing />
                 <Contact />
             </main>
@@ -28,4 +27,3 @@ export default function Portfolio() {
         </div>
     );
 }
-
