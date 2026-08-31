@@ -25,7 +25,7 @@ export const SOCIAL = [
     { label: "Email", href: "mailto:akhiyaarmuhammed123@gmail.com", icon: "Mail", value: "akhiyaarmuhammed123@gmail.com" },
     { label: "Phone", href: "tel:+918943459195", icon: "Phone", value: "+91 89434 59195" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/akhiyar-muhammed", icon: "Linkedin", value: "linkedin.com/in/akhiyar-muhammed" },
-    { label: "GitHub", href: "https://github.com/akhiyaarmuhammed", icon: "Github", value: "github.com/akhiyaarmuhammed" },
+    { label: "GitHub", href: "https://github.com/AKHIYAR-MUHAMMED", icon: "Github", value: "github.com/AKHIYAR-MUHAMMED" },
 ];
 
 export const SKILL_GROUPS = [
