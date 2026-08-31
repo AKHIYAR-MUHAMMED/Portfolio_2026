@@ -94,6 +94,7 @@ export default function Footer() {
                     <button
                         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         data-testid="footer-scroll-top"
+                        aria-label="Back to top"
                         className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#9CA3AF] hover:text-accent transition-colors cursor-pointer bg-[#141414] px-4 py-2 rounded-sm border border-[#222] hover:border-accent/40"
                     >
                         <span>Back to top</span>
