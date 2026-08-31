@@ -122,7 +122,7 @@ export const PROJECTS = [
             "Developed during the ICT Academy Internship, this project addresses real-world circulation workflows. Features include JWT authentication, role-based access control (Student, Faculty, Librarian), barcode/ISBN lookup, and automated overdue alerts. Designed with a decoupled architecture for maximum scalability.",
         stack: ["React", "Node.js", "Express", "REST API", "SQL", "JWT Auth", "Tailwind CSS"],
         image: "https://images.pexels.com/photos/256502/pexels-photo-256502.jpeg",
-        github: "https://github.com/akhiyaarmuhammed/library-management-system",
+        github: "https://github.com/AKHIYAR-MUHAMMED/DAIS",
         demo: "https://github.com/akhiyaarmuhammed",
         highlights: ["Automated lending & returning workflows", "Role-based authorization system", "Full audit logging and analytics dashboard"]
     },
