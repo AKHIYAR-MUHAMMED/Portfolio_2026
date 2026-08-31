@@ -164,7 +164,7 @@ export const PROJECTS = [
             "A collection of exploratory data analysis (EDA) studies transforming raw tabular datasets into compelling narratives. Implements distribution analysis, statistical correlation matrices, geospatial mapping, and automated PDF executive summaries.",
         stack: ["Python", "Pandas", "Matplotlib", "Plotly", "Jupyter", "Seaborn"],
         image: "https://images.pexels.com/photos/10325707/pexels-photo-10325707.png",
-        github: "https://github.com/akhiyaarmuhammed/data-vis-playground",
+        github: "https://github.com/AKHIYAR-MUHAMMED/MutualFundAnalytic",
         demo: "https://github.com/akhiyaarmuhammed",
         highlights: ["Over 10+ public dataset deep dives", "High-fidelity interactive Plotly figures", "Statistical hypothesis testing writeups"]
     },
