@@ -66,6 +66,15 @@ portfolio_2026/
 │   ├── Footer.jsx           # Copyright info, resume links, and quick-links
 │   └── index.css            # Base stylesheet importing Tailwind and setting root styles
 └── dist/                    # Compiled production assets (created after building)
+
+---
+
+## 💻 Featured Projects & Repositories
+
+- 📚 **[Library Management System (DAIS)](https://github.com/AKHIYAR-MUHAMMED/DAIS):** Digital library platform with JWT authentication, catalog search, and automated fine management.
+- 🤖 **[Emotion Detector (Blogapp / IoT)](https://github.com/AKHIYAR-MUHAMMED/Blogapp):** Real-time acoustic & facial sentiment detection powered by edge ML and WebSockets.
+- 🩺 **[Pill Cam Disease Finder (Deep Care)](https://github.com/JayalakshmyJayakrishnan/Deep-Care/tree/master):** Diagnostic computer vision pipeline for wireless capsule endoscopy frame analysis.
+- 📊 **[Data Visualization & Analytics (MutualFundAnalytic)](https://github.com/AKHIYAR-MUHAMMED/MutualFundAnalytic):** Interactive financial data storytelling and exploratory analysis platform.
 ```
 
 ---
