@@ -150,7 +150,7 @@ export const PROJECTS = [
             "Capsule endoscopy produces thousands of frames per exam. This project leverages OpenCV frame preprocessing and deep convolutional classifiers to flag bleedings, ulcers, and polyps. Includes an interactive doctor portal with diagnostic heatmaps and frame-by-frame scrubbing.",
         stack: ["Python", "OpenCV", "FastAPI", "Plotly", "D3.js", "PyTorch"],
         image: "https://images.pexels.com/photos/247676/pexels-photo-247676.jpeg",
-        github: "https://github.com/akhiyaarmuhammed/pill-cam-disease-finder",
+        github: "https://github.com/JayalakshmyJayakrishnan/Deep-Care/tree/master",
         demo: "https://github.com/akhiyaarmuhammed",
         highlights: ["Automated lesion detection in endoscopic video", "FastAPI asynchronous frame analysis", "Interactive diagnostic heatmap viewer"]
     },
