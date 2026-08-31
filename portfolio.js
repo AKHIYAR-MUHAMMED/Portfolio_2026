@@ -1,4 +1,5 @@
 // Portfolio content extracted from Akhiyar Muhammed's resume
+export const PORTFOLIO_VERSION = "1.1.1";
 
 export const getResumeUrl = () => {
     const base = import.meta.env.BASE_URL || '/';
