@@ -136,7 +136,7 @@ export const PROJECTS = [
             "A hybrid IoT + Machine Learning solution that analyzes vocal tone frequency and emotional indicators in real time. Deploys a lightweight quantized neural network on edge hardware, streaming metrics via WebSockets to a React-based monitoring console.",
         stack: ["Python", "TensorFlow Lite", "Arduino / ESP32", "WebSockets", "React", "Signal Processing"],
         image: "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=1200&q=80",
-        github: "https://github.com/akhiyaarmuhammed/emotion-detector-iot",
+        github: "https://github.com/AKHIYAR-MUHAMMED/Blogapp",
         demo: "https://github.com/akhiyaarmuhammed",
         highlights: ["Edge inference with TensorFlow Lite", "Sub-100ms latency WebSocket stream", "Interactive sentiment trend charts"]
     },
