@@ -2,7 +2,8 @@
 export const PORTFOLIO_VERSION = "1.1.1";
 
 export const getResumeUrl = () => {
-    const base = import.meta.env.BASE_URL || '/';
+    const base = import.meta.env.BASE_URL || './';
+    if (base === './' || base === '.') return './AKHI_RESUME_18-05.pdf';
     return `${base.replace(/\/$/, '')}/AKHI_RESUME_18-05.pdf`;
 };
 
