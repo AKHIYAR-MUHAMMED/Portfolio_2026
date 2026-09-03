@@ -34,18 +34,19 @@ export default function Contact() {
       const apiUrl = `${apiBase}/contact`;
 
       let sentViaApi = false;
-      try {
-        const response = await fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-        if (response.ok) {
-          sentViaApi = true;
+      if (import.meta.env.VITE_API_URL) {
+        try {
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+          });
+          if (response.ok) {
+            sentViaApi = true;
+          }
+        } catch (networkErr) {
+          console.info("API server offline, saving message locally:", networkErr);
         }
-      } catch (networkErr) {
-        // Fallback for standalone frontend
-        console.warn("API server offline, saving message locally:", networkErr);
       }
 
       // Save to localStorage as a backup message log

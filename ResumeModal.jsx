@@ -90,7 +90,7 @@ export default function ResumeModal({ isOpen, onClose }) {
 
         const loadPdf = async () => {
             try {
-                // Try fetching primary URL
+                // Try fetching primary URL with cmaps
                 const loadingTask = pdfjsLib.getDocument({
                     url: resumeUrl,
                     cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
@@ -102,21 +102,18 @@ export default function ResumeModal({ isOpen, onClose }) {
                     setPdfDoc(doc);
                     setNumPages(doc.numPages);
                     setIsLoading(false);
+                    return;
                 }
             } catch (err) {
-                console.warn("Primary PDF URL failed, trying fallback relative path:", err);
+                console.warn("Primary PDF URL with cMaps failed, trying simple load:", err);
                 try {
-                    // Fallback to relative path without base if primary failed
-                    const fallbackTask = pdfjsLib.getDocument({
-                        url: './AKHI_RESUME_18-05.pdf',
-                        cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
-                        cMapPacked: true,
-                    });
+                    const fallbackTask = pdfjsLib.getDocument({ url: resumeUrl });
                     const fallbackDoc = await fallbackTask.promise;
                     if (!isCancelled) {
                         setPdfDoc(fallbackDoc);
                         setNumPages(fallbackDoc.numPages);
                         setIsLoading(false);
+                        return;
                     }
                 } catch (fallbackErr) {
                     console.error("Failed to load PDF:", fallbackErr);
