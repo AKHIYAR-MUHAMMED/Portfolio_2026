@@ -18,7 +18,7 @@ export default function Community() {
                         <div
                             key={c.role + c.org}
                             data-testid={`community-card-${i}`}
-                            className={`group relative bg-[#121212] border border-[#2A2A2A] rounded-sm p-8 md:p-10 hover:border-accent transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between ${
+                            className={`group relative bg-[#121218]/45 backdrop-blur-xl border border-white/12 rounded-xl p-8 md:p-10 hover:border-accent transition-all duration-300 hover:-translate-y-1 shadow-2xl flex flex-col justify-between ${
                                 i === 0 || i === 3 ? "md:col-span-6" : "md:col-span-4"
                             }`}
                         >
@@ -27,7 +27,7 @@ export default function Community() {
                                     <div className="p-2.5 bg-accent/10 border border-accent/20 rounded-sm text-accent">
                                         <Users className="w-5 h-5" />
                                     </div>
-                                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#6B7280] bg-[#181818] px-2.5 py-1 rounded">
+                                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#6B7280] bg-[#1A1A24]/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded">
                                         {c.period || `0${i + 1}`}
                                     </span>
                                 </div>
@@ -42,7 +42,7 @@ export default function Community() {
                                 </p>
                             </div>
 
-                            <div className="mt-8 pt-4 border-t border-[#1F1F1F] flex items-center gap-2 text-xs font-mono text-[#6B7280]">
+                            <div className="mt-8 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-mono text-[#6B7280]">
                                 <Sparkles className="w-3.5 h-3.5 text-accent" />
                                 <span>Active Leadership &amp; Impact</span>
                             </div>

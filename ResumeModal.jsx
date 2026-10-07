@@ -221,6 +221,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             }
         }
     };
+    
 
     const handleZoomIn = () => setScale((s) => Math.min(s + 0.2, 2.4));
     const handleZoomOut = () => setScale((s) => Math.max(s - 0.2, 0.6));

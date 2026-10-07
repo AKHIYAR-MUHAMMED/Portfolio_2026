@@ -9,7 +9,7 @@ export default function Writing() {
 
     return (
         <>
-            <section id="writing" data-testid="writing-section" className="relative px-6 md:px-12 py-24 md:py-32 bg-[#0C0C0C]">
+            <section id="writing" data-testid="writing-section" className="relative px-6 md:px-12 py-24 md:py-32 bg-transparent">
                 <div className="max-w-7xl mx-auto">
                     <SectionHeader
                         index="06"
@@ -24,7 +24,7 @@ export default function Writing() {
                                 key={p.id || p.title}
                                 data-testid={`post-card-${i}`}
                                 onClick={() => setSelectedPost(p)}
-                                className="group bg-[#121212] border border-[#2A2A2A] rounded-sm p-8 hover:border-accent transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1 shadow-sm"
+                                className="group bg-[#121218]/45 backdrop-blur-xl border border-white/12 rounded-xl p-8 hover:border-accent transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1 shadow-2xl"
                             >
                                 <div>
                                     <div className="flex items-center justify-between mb-6">
@@ -44,7 +44,7 @@ export default function Writing() {
                                     </p>
                                 </div>
 
-                                <div className="mt-8 flex items-center justify-between border-t border-[#222222] pt-4">
+                                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4">
                                     <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#6B7280] flex items-center gap-1.5">
                                         <Calendar className="w-3 h-3" />
                                         {p.date}

@@ -78,7 +78,7 @@ export default function Contact() {
           {/* Left info column */}
           <div className="md:col-span-5 space-y-8">
             {/* Email Box */}
-            <div className="bg-[#121212] border border-[#2A2A2A] p-6 rounded-sm space-y-3">
+            <div className="bg-[#121218]/45 backdrop-blur-xl border border-white/12 p-6 rounded-xl space-y-3 shadow-xl hover:border-accent/60 transition-colors">
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#6B7280]">
                   Direct Email
@@ -105,7 +105,7 @@ export default function Contact() {
             </div>
 
             {/* Phone Box */}
-            <div className="bg-[#121212] border border-[#2A2A2A] p-6 rounded-sm space-y-3">
+            <div className="bg-[#121218]/45 backdrop-blur-xl border border-white/12 p-6 rounded-xl space-y-3 shadow-xl hover:border-accent/60 transition-colors">
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#6B7280]">
                   Phone &amp; WhatsApp
@@ -132,7 +132,7 @@ export default function Contact() {
             </div>
 
             {/* Location */}
-            <div className="bg-[#121212] border border-[#2A2A2A] p-6 rounded-sm">
+            <div className="bg-[#121218]/45 backdrop-blur-xl border border-white/12 p-6 rounded-xl shadow-xl">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#6B7280] mb-2">
                 Location
               </p>
@@ -158,7 +158,7 @@ export default function Contact() {
                       data-testid={`social-${s.label.toLowerCase()}`}
                       aria-label={s.label}
                       title={s.label}
-                      className="w-12 h-12 inline-flex items-center justify-center border border-[#2A2A2A] bg-[#121212] rounded-sm text-[#9CA3AF] hover:text-accent hover:border-accent hover:bg-[#181818] transition-all cursor-pointer shadow-sm"
+                      className="w-12 h-12 inline-flex items-center justify-center border border-white/12 bg-[#121218]/50 backdrop-blur-md rounded-lg text-[#9CA3AF] hover:text-accent hover:border-accent hover:bg-accent/20 transition-all cursor-pointer shadow-md"
                     >
                       <Icon className="w-5 h-5" />
                     </a>
@@ -172,7 +172,7 @@ export default function Contact() {
           <form
             onSubmit={onSubmit}
             data-testid="contact-form"
-            className="md:col-span-7 bg-[#121212] border border-[#2A2A2A] rounded-sm p-8 md:p-10 space-y-6 shadow-xl"
+            className="md:col-span-7 bg-[#121218]/45 backdrop-blur-xl border border-white/12 rounded-xl p-8 md:p-10 space-y-6 shadow-2xl"
           >
             <div className="flex items-center gap-2 text-xs font-mono text-accent font-semibold mb-2">
               <Sparkles className="w-3.5 h-3.5" />
@@ -218,7 +218,7 @@ export default function Contact() {
                 onChange={onChange}
                 data-testid="contact-input-message"
                 placeholder="Tell me what you're building, what role you're hiring for, or what you'd like to chat about…"
-                className="w-full bg-[#181818] border border-[#2A2A2A] rounded-sm p-4 focus:border-accent focus:outline-none text-white text-base placeholder:text-[#4B5563] resize-none transition-colors"
+                className="w-full bg-[#14141B]/50 backdrop-blur-md border border-white/12 rounded-md p-4 focus:border-accent focus:bg-[#14141B]/80 focus:outline-none text-white text-base placeholder:text-[#6B7280] resize-none transition-colors"
               />
             </div>
 
@@ -258,7 +258,7 @@ function Field({ label, name, value, onChange, type = "text", placeholder, testi
         onChange={onChange}
         placeholder={placeholder}
         data-testid={testid}
-        className="w-full bg-[#181818] border border-[#2A2A2A] rounded-sm px-4 py-3 focus:border-accent focus:outline-none text-white text-base placeholder:text-[#4B5563] transition-colors"
+        className="w-full bg-[#14141B]/50 backdrop-blur-md border border-white/12 rounded-md px-4 py-3 focus:border-accent focus:bg-[#14141B]/80 focus:outline-none text-white text-base placeholder:text-[#6B7280] transition-colors"
       />
     </div>
   );

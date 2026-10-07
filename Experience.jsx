@@ -1,8 +1,10 @@
 import { useState } from "react";
 import SectionHeader from "./SectionHeader.jsx";
 import { EXPERIENCE, EDUCATION, CERTIFICATIONS } from "./portfolio.js";
-import { Award, Briefcase, GraduationCap, ChevronRight, ExternalLink } from "lucide-react";
+import { Award, Briefcase, GraduationCap, ChevronRight } from "lucide-react";
 import CertificationModal from "./CertificationModal.jsx";
+import TiltCard from "./TiltCard.jsx";
+import { sound } from "./audio.js";
 
 export default function Experience() {
     const [selectedCert, setSelectedCert] = useState(null);
@@ -67,22 +69,29 @@ export default function Experience() {
                             </p>
                             <ul className="space-y-3">
                                 {CERTIFICATIONS.map((c, i) => (
-                                    <li
-                                        key={c.title}
-                                        data-testid={`cert-${i}`}
-                                        onClick={() => setSelectedCert(c)}
-                                        className="group flex items-start justify-between gap-4 border border-[#2A2A2A] bg-[#121212] p-4 rounded-sm hover:border-accent hover:bg-[#161616] transition-all cursor-pointer shadow-sm"
-                                    >
-                                        <div className="flex-1">
-                                            <p className="text-white font-semibold text-sm group-hover:text-accent transition-colors flex items-center gap-1.5">
-                                                <span>{c.title}</span>
-                                                <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
-                                            </p>
-                                            <p className="font-mono text-xs text-[#9CA3AF] mt-1">{c.issuer}</p>
-                                        </div>
-                                        <span className="font-mono text-[10px] text-[#6B7280] group-hover:text-accent transition-colors px-2 py-1 bg-[#1A1A1A] rounded">
-                                            {c.date || `0${i + 1}`}
-                                        </span>
+                                    <li key={c.title}>
+                                        <TiltCard maxTilt={8} scale={1.02}>
+                                            <div
+                                                data-testid={`cert-${i}`}
+                                                onClick={() => {
+                                                    sound.playClick();
+                                                    setSelectedCert(c);
+                                                }}
+                                                onMouseEnter={() => sound.playHover()}
+                                                className="group flex items-start justify-between gap-4 border border-white/12 bg-[#121218]/45 backdrop-blur-xl p-4 rounded-xl hover:border-accent hover:bg-[#161622]/60 transition-all cursor-pointer shadow-xl"
+                                            >
+                                                <div className="flex-1">
+                                                    <p className="text-white font-semibold text-sm group-hover:text-accent transition-colors flex items-center gap-1.5">
+                                                        <span>{c.title}</span>
+                                                        <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
+                                                    </p>
+                                                    <p className="font-mono text-xs text-[#9CA3AF] mt-1">{c.issuer}</p>
+                                                </div>
+                                                <span className="font-mono text-[10px] text-[#6B7280] group-hover:text-accent transition-colors px-2 py-1 bg-[#1A1A24]/60 border border-white/10 rounded">
+                                                    {c.date || `0${i + 1}`}
+                                                </span>
+                                            </div>
+                                        </TiltCard>
                                     </li>
                                 ))}
                             </ul>
@@ -110,22 +119,26 @@ function Timeline({ title, items, icon }) {
                     {title}
                 </h3>
             </div>
-            <ol className="relative border-l border-[#2A2A2A] pl-8 space-y-10">
+            <ol className="relative border-l border-white/10 pl-8 space-y-8">
                 {items.map((it, i) => (
                     <li key={i} className="relative">
                         <span className="absolute -left-[37px] top-1.5 w-3.5 h-3.5 rounded-full bg-accent glow-accent border-2 border-black" />
-                        <div className="flex flex-wrap items-baseline justify-between gap-2">
-                            <h4 className="font-display text-2xl md:text-3xl text-white tracking-tight font-bold">
-                                {it.top}
-                            </h4>
-                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent font-semibold px-2 py-0.5 bg-accent/10 rounded">
-                                {it.meta}
-                            </span>
-                        </div>
-                        <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9CA3AF] mt-1 font-medium">
-                            {it.sub}
-                        </p>
-                        {it.body}
+                        <TiltCard maxTilt={5} scale={1.01} glare={false}>
+                            <div className="bg-[#121218]/45 backdrop-blur-xl border border-white/12 p-6 rounded-xl shadow-2xl hover:border-accent/60 transition-all">
+                                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                                    <h4 className="font-display text-2xl md:text-3xl text-white tracking-tight font-bold">
+                                        {it.top}
+                                    </h4>
+                                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent font-semibold px-2 py-0.5 bg-accent/10 rounded">
+                                        {it.meta}
+                                    </span>
+                                </div>
+                                <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#9CA3AF] mt-1 font-medium">
+                                    {it.sub}
+                                </p>
+                                {it.body}
+                            </div>
+                        </TiltCard>
                     </li>
                 ))}
             </ol>

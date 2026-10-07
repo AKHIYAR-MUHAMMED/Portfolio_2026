@@ -23,7 +23,7 @@ export default function About() {
     return (
         <>
             <section id="about" data-testid="about-section" className="relative px-6 md:px-12 py-24 md:py-32">
-                <div className="max-w-7xl mx-auto bg-[#111111] border border-[#2A2A2A] p-8 md:p-14 rounded-lg shadow-xl">
+                <div className="max-w-7xl mx-auto bg-[#121218]/40 backdrop-blur-xl border border-white/15 p-8 md:p-14 rounded-2xl shadow-2xl hover:border-accent/40 transition-colors">
                     <SectionHeader
                         index="01"
                         kicker="About Me"
@@ -43,14 +43,14 @@ export default function About() {
                             <div className="pt-4 flex flex-wrap items-center gap-4">
                                 <button
                                     onClick={handleDownloadResume}
-                                    className="inline-flex items-center gap-2 bg-accent hover:bg-[#FF8B33] text-white px-5 py-3 rounded-sm font-mono text-xs uppercase tracking-wider transition-all cursor-pointer font-semibold shadow"
+                                    className="inline-flex items-center gap-2 bg-accent hover:bg-[#FF8B33] text-white px-5 py-3 rounded-sm font-mono text-xs uppercase tracking-wider transition-all cursor-pointer font-semibold shadow-lg"
                                 >
                                     <Download className="w-4 h-4" />
                                     Download Resume (PDF)
                                 </button>
                                 <button
                                     onClick={() => setResumeModalOpen(true)}
-                                    className="inline-flex items-center gap-2 border border-[#333] hover:border-accent text-[#D1D5DB] hover:text-white px-4 py-3 rounded-sm font-mono text-xs uppercase tracking-wider transition-all cursor-pointer bg-[#161616]"
+                                    className="inline-flex items-center gap-2 border border-white/15 hover:border-accent text-[#D1D5DB] hover:text-white px-4 py-3 rounded-sm font-mono text-xs uppercase tracking-wider transition-all cursor-pointer bg-[#16161F]/50 backdrop-blur-md"
                                 >
                                     <Eye className="w-4 h-4 text-accent" />
                                     Preview Document
@@ -58,7 +58,7 @@ export default function About() {
                             </div>
                         </div>
 
-                        <aside className="md:col-span-5 md:pl-10 md:border-l border-[#2A2A2A]">
+                        <aside className="md:col-span-5 md:pl-10 md:border-l border-white/10">
                             <h4 className="font-mono text-xs uppercase tracking-widest text-accent font-semibold mb-6 flex items-center gap-2">
                                 <Sparkles className="w-4 h-4" />
                                 Quick Overview
@@ -71,7 +71,7 @@ export default function About() {
                                     { k: "Community", v: "CSI Joint Secretary · Hack Club Lead · NSS Volunteer" },
                                     { k: "Languages", v: "English · Malayalam · Hindi · Tamil · Arabic" },
                                 ].map((row) => (
-                                    <li key={row.k} className="grid grid-cols-3 gap-3 border-b border-[#1F1F1F] pb-4">
+                                    <li key={row.k} className="grid grid-cols-3 gap-3 border-b border-white/10 pb-4">
                                         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6B7280] col-span-1 font-medium">
                                             {row.k}
                                         </span>

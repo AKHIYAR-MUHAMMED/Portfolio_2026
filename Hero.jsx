@@ -2,13 +2,17 @@ import { useState } from "react";
 import { ArrowUpRight, Download, MapPin, Eye, Sparkles } from "lucide-react";
 import { PROFILE, getResumeUrl } from "./portfolio.js";
 import ResumeModal from "./ResumeModal.jsx";
+import Hero3D from "./Hero3D.jsx";
+import TiltCard from "./TiltCard.jsx";
+import { sound } from "./audio.js";
 import { toast } from "sonner";
 
-export default function Hero() {
+export default function Hero({ theme = "orange" }) {
     const [resumeModalOpen, setResumeModalOpen] = useState(false);
 
     const handleDownloadResume = (e) => {
         e.preventDefault();
+        sound.playClick();
         const url = getResumeUrl();
         const link = document.createElement('a');
         link.href = url;
@@ -21,58 +25,49 @@ export default function Hero() {
 
     return (
         <>
-            <section id="hero" data-testid="hero-section" className="relative pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-12 overflow-hidden">
-                {/* Background accent */}
-                <div className="pointer-events-none absolute inset-0 opacity-[0.18]" aria-hidden>
-                    <img
-                        src="https://images.pexels.com/photos/10325707/pexels-photo-10325707.png"
-                        alt=""
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
-                </div>
-
+            <section id="hero" data-testid="hero-section" className="relative pt-32 md:pt-36 pb-20 md:pb-28 px-6 md:px-12 overflow-hidden">
                 <div className="relative max-w-7xl mx-auto">
                     {/* Overline with status pill */}
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-8 fade-up" style={{ animationDelay: "0.05s" }}>
                         <div className="flex items-center gap-3">
                             <span className="w-10 h-px bg-accent" />
                             <p className="font-mono text-[11px] md:text-xs uppercase tracking-[0.3em] text-accent font-semibold">
-                                Portfolio / 2026
+                                Live 3D Portfolio / 2026
                             </p>
                         </div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full font-mono text-[10px] uppercase tracking-wider">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full font-mono text-[10px] uppercase tracking-wider backdrop-blur-md">
                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                            <span>Available for Internships & Projects</span>
+                            <span>Available for Internships &amp; Projects</span>
                         </div>
                     </div>
 
-                    {/* Name */}
-                    <h1
-                        data-testid="hero-name"
-                        className="font-display font-semibold text-[15vw] md:text-[10.5vw] leading-[0.85] tracking-tighter text-white fade-up select-none"
-                        style={{ animationDelay: "0.15s" }}
-                    >
-                        Akhiyar
-                        <br />
-                        <span className="text-accent">Muhammed</span>
-                        <span className="text-accent cursor-blink">_</span>
-                    </h1>
+                    {/* Main Hero Header & 3D Interactive Stage Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        {/* Column 1: Headline & CTAs */}
+                        <div className="lg:col-span-7 space-y-6">
+                            <h1
+                                data-testid="hero-name"
+                                className="font-display font-semibold text-[13vw] lg:text-[7.5vw] leading-[0.88] tracking-tighter text-white fade-up select-none"
+                                style={{ animationDelay: "0.15s" }}
+                            >
+                                Akhiyar
+                                <br />
+                                <span className="text-accent">Muhammed</span>
+                                <span className="text-accent cursor-blink">_</span>
+                            </h1>
 
-                    {/* Subhead grid */}
-                    <div className="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-                        <div className="md:col-span-7 fade-up" style={{ animationDelay: "0.3s" }}>
-                            <p className="font-body text-xl md:text-2xl text-[#E5E7EB] leading-relaxed max-w-2xl">
-                                Data Science engineer + full-stack builder. Specializing in Python, machine learning models, and modern React architectures to transform data into human-centered software.
+                            <p className="font-body text-lg md:text-xl text-[#E5E7EB] leading-relaxed max-w-2xl fade-up" style={{ animationDelay: "0.25s" }}>
+                                Data Science engineer + full-stack builder. Specializing in Python, machine learning models, and modern React 3D architectures to transform data into human-centered software.
                             </p>
-                            
+
                             {/* CTA Action Bar */}
-                            <div className="mt-8 flex flex-wrap items-center gap-4">
+                            <div className="pt-2 flex flex-wrap items-center gap-4 fade-up" style={{ animationDelay: "0.35s" }}>
                                 <a
                                     data-testid="hero-cta-work"
                                     href="#projects"
                                     onClick={(e) => {
                                         e.preventDefault();
+                                        sound.playClick();
                                         document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
                                     }}
                                     className="group inline-flex items-center gap-2 bg-accent hover:bg-[#FF8B33] text-white px-6 py-3.5 rounded-sm font-mono text-xs uppercase tracking-[0.18em] transition-all shadow-lg cursor-pointer font-semibold"
@@ -84,73 +79,70 @@ export default function Hero() {
                                 <button
                                     data-testid="hero-cta-resume"
                                     onClick={handleDownloadResume}
+                                    onMouseEnter={() => sound.playHover()}
                                     className="inline-flex items-center gap-2 border border-[#333333] hover:border-accent bg-[#141414] hover:bg-[#1A1A1A] text-white px-5 py-3.5 rounded-sm font-mono text-xs uppercase tracking-[0.18em] transition-all cursor-pointer"
                                     title="Download AKHI_RESUME_18-05.pdf"
                                 >
                                     <Download className="w-4 h-4 text-accent" />
-                                    <span>Download Resume</span>
+                                    <span>Resume</span>
                                 </button>
 
                                 <button
-                                    onClick={() => setResumeModalOpen(true)}
+                                    onClick={() => {
+                                        sound.playClick();
+                                        setResumeModalOpen(true);
+                                    }}
+                                    onMouseEnter={() => sound.playHover()}
                                     className="inline-flex items-center gap-2 border border-[#262626] hover:border-accent/60 text-[#9CA3AF] hover:text-white px-4 py-3.5 rounded-sm font-mono text-xs uppercase tracking-[0.18em] transition-all cursor-pointer"
                                     title="Quick Preview Resume"
                                 >
                                     <Eye className="w-4 h-4" />
                                     <span>Preview</span>
                                 </button>
+                            </div>
 
-                                <a
-                                    data-testid="hero-cta-contact"
-                                    href="#contact"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                                    }}
-                                    className="font-mono text-xs uppercase tracking-[0.18em] text-[#9CA3AF] hover:text-white link-underline cursor-pointer py-2"
-                                >
-                                    Or say hello →
-                                </a>
+                            {/* Stat Grid inside 3D Tilt Cards */}
+                            <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 fade-up" style={{ animationDelay: "0.45s" }}>
+                                <TiltCard maxTilt={8} scale={1.03}>
+                                    <div className="p-4 bg-[#121218]/40 backdrop-blur-xl border border-white/15 rounded-lg shadow-xl hover:border-accent/60 transition-all">
+                                        <div className="font-display text-2xl md:text-3xl text-white font-bold">4+</div>
+                                        <div className="font-mono text-[9px] uppercase tracking-wider text-[#9CA3AF] mt-0.5">Years Coding</div>
+                                    </div>
+                                </TiltCard>
+
+                                <TiltCard maxTilt={8} scale={1.03}>
+                                    <div className="p-4 bg-[#121218]/40 backdrop-blur-xl border border-white/15 rounded-lg shadow-xl hover:border-accent/60 transition-all">
+                                        <div className="font-display text-2xl md:text-3xl text-white font-bold">5</div>
+                                        <div className="font-mono text-[9px] uppercase tracking-wider text-[#9CA3AF] mt-0.5">Communities</div>
+                                    </div>
+                                </TiltCard>
+
+                                <TiltCard maxTilt={8} scale={1.03}>
+                                    <div className="p-4 bg-[#121218]/40 backdrop-blur-xl border border-white/15 rounded-lg shadow-xl hover:border-accent/60 transition-all">
+                                        <div className="font-display text-2xl md:text-3xl text-white font-bold">5</div>
+                                        <div className="font-mono text-[9px] uppercase tracking-wider text-[#9CA3AF] mt-0.5">Languages</div>
+                                    </div>
+                                </TiltCard>
                             </div>
                         </div>
 
-                        {/* Stat / meta column */}
-                        <div className="md:col-span-5 md:pl-8 md:border-l border-[#2A2A2A] fade-up" style={{ animationDelay: "0.45s" }}>
-                            <div className="space-y-6">
-                                <div>
-                                    <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#6B7280]">
-                                        Education &amp; Focus
-                                    </p>
-                                    <p className="mt-2 text-white text-base">
-                                        Pursuing <span className="text-accent font-semibold">B.Tech in Data Science</span> at Adi Shankara
-                                        Institute of Engineering &amp; Technology (2024 — 2027).
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#6B7280]">
-                                        Location
-                                    </p>
-                                    <p className="mt-2 flex items-center gap-2 text-white">
-                                        <MapPin className="w-4 h-4 text-accent" />
-                                        {PROFILE.location}
-                                    </p>
-                                </div>
-                                <div className="grid grid-cols-3 gap-4 pt-2 border-t border-[#1C1C1C]">
-                                    <Stat label="Years coding" value="4+" />
-                                    <Stat label="Communities led" value="5" />
-                                    <Stat label="Languages" value="5" />
-                                </div>
-                            </div>
+                        {/* Column 2: Interactive 3D Stage */}
+                        <div className="lg:col-span-5 fade-up" style={{ animationDelay: "0.3s" }}>
+                            <TiltCard maxTilt={6} scale={1.01} glare={false}>
+                                <Hero3D theme={theme} />
+                            </TiltCard>
                         </div>
                     </div>
                 </div>
 
                 {/* Marquee ticker */}
-                <div className="relative mt-24 md:mt-32 border-y border-[#2A2A2A] overflow-hidden bg-[#0D0D0D]">
-                    <div className="marquee-track flex whitespace-nowrap py-6">
+                <div className="relative mt-20 border-y border-white/10 overflow-hidden bg-[#0D0D12]/40 backdrop-blur-md">
+                    <div className="marquee-track flex whitespace-nowrap py-5">
                         {[...Array(2)].map((_, i) => (
                             <div key={i} className="flex shrink-0 items-center gap-12 pr-12">
                                 {[
+                                    "Live 3D WebGL",
+                                    "•",
                                     "Data Science",
                                     "•",
                                     "Full Stack",
@@ -161,7 +153,7 @@ export default function Hero() {
                                     "•",
                                     "Machine Learning",
                                     "•",
-                                    "Team Leadership",
+                                    "Three.js & R3F",
                                     "•",
                                     "Hack Club Lead",
                                     "•",
@@ -170,7 +162,7 @@ export default function Hero() {
                                 ].map((t, idx) => (
                                     <span
                                         key={idx}
-                                        className="font-display text-2xl md:text-4xl text-[#9CA3AF] uppercase tracking-tight"
+                                        className="font-display text-xl md:text-3xl text-[#9CA3AF] uppercase tracking-tight"
                                     >
                                         {t === "•" ? <span className="text-accent">{t}</span> : t}
                                     </span>
@@ -186,16 +178,5 @@ export default function Hero() {
                 onClose={() => setResumeModalOpen(false)}
             />
         </>
-    );
-}
-
-function Stat({ label, value }) {
-    return (
-        <div>
-            <div className="font-display text-3xl md:text-4xl text-white font-bold">{value}</div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#6B7280] mt-1">
-                {label}
-            </div>
-        </div>
     );
 }
